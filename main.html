@@ -24,7 +24,7 @@
             box-sizing: border-box;
             font-family: 'Outfit', sans-serif;
             user-select: none;
-            cursor: crosshair; /* Advanced aesthetic cursor */
+            cursor: crosshair;
         }
 
         body {
@@ -78,7 +78,9 @@
             transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
-        .menu-trigger:hover { transform: scale(1.1) rotate(90deg); }
+        .menu-trigger:hover { 
+            transform: scale(1.1) rotate(90deg); 
+        }
 
         .side-nav {
             position: fixed;
@@ -94,7 +96,9 @@
             border-left: 2px solid var(--anime-cyan);
         }
 
-        .side-nav.active { right: 0; }
+        .side-nav.active { 
+            right: 0; 
+        }
 
         .nav-item {
             display: flex;
@@ -109,7 +113,12 @@
             transition: 0.4s;
         }
 
-        .nav-item i { margin-right: 15px; font-size: 20px; color: var(--anime-cyan); }
+        .nav-item i { 
+            margin-right: 15px; 
+            font-size: 20px; 
+            color: var(--anime-cyan); 
+        }
+
         .nav-item:hover {
             background: var(--anime-cyan);
             box-shadow: 0 0 30px var(--anime-cyan);
@@ -134,8 +143,16 @@
         }
 
         @keyframes cardEntrance {
-            from { opacity: 0; transform: scale(0.8) translateY(50px); filter: blur(10px); }
-            to { opacity: 1; transform: scale(1) translateY(0); filter: blur(0); }
+            from { 
+                opacity: 0; 
+                transform: scale(0.8) translateY(50px); 
+                filter: blur(10px); 
+            }
+            to { 
+                opacity: 1; 
+                transform: scale(1) translateY(0); 
+                filter: blur(0); 
+            }
         }
 
         /* --- Animated Logo --- */
@@ -148,17 +165,35 @@
 
         .orbit {
             position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
+            top: 0; 
+            left: 0; 
+            width: 100%; 
+            height: 100%;
             border-radius: 50%;
             border: 3px solid transparent;
         }
 
-        .orbit-1 { border-top-color: var(--anime-cyan); animation: spin 4s linear infinite; filter: drop-shadow(0 0 5px var(--anime-cyan)); }
-        .orbit-2 { border-right-color: var(--anime-pink); animation: spin 3s linear infinite reverse; width: 80%; height: 80%; top: 10%; left: 10%; }
+        .orbit-1 { 
+            border-top-color: var(--anime-cyan); 
+            animation: spin 4s linear infinite; 
+            filter: drop-shadow(0 0 5px var(--anime-cyan)); 
+        }
+
+        .orbit-2 { 
+            border-right-color: var(--anime-pink); 
+            animation: spin 3s linear infinite reverse; 
+            width: 80%; 
+            height: 80%; 
+            top: 10%; 
+            left: 10%; 
+        }
         
         .logo-img {
             position: absolute;
-            top: 20%; left: 20%; width: 60%; height: 60%;
+            top: 20%; 
+            left: 20%; 
+            width: 60%; 
+            height: 60%;
             border-radius: 50%;
             object-fit: cover;
             z-index: 5;
@@ -166,7 +201,11 @@
             box-shadow: 0 0 30px var(--anime-cyan);
         }
 
-        @keyframes spin { to { transform: rotate(360deg); } }
+        @keyframes spin { 
+            to { 
+                transform: rotate(360deg); 
+            } 
+        }
 
         h1 {
             font-family: 'Syncopate', sans-serif;
@@ -180,7 +219,11 @@
             animation: gradientMove 5s linear infinite;
         }
 
-        @keyframes gradientMove { to { background-position: 300%; } }
+        @keyframes gradientMove { 
+            to { 
+                background-position: 300%; 
+            } 
+        }
 
         /* --- Advanced Controls --- */
         input {
@@ -241,7 +284,9 @@
             transition: 0.3s;
         }
 
-        .pair-code-box:active { transform: scale(0.95); }
+        .pair-code-box:active { 
+            transform: scale(0.95); 
+        }
 
         .loader {
             display: none;
@@ -252,6 +297,15 @@
             border-radius: 50%;
             animation: spin 0.6s infinite linear;
             margin: 0 auto;
+        }
+
+        /* Status message styling */
+        #status-msg {
+            margin-top: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            min-height: 20px;
+            transition: 0.3s;
         }
     </style>
 </head>
@@ -271,11 +325,11 @@
             <i class="fas fa-id-badge"></i> Developer
         </a>
         
-        <a href="https://chat.whatsapp.com/YOUR_LINK" class="nav-item">
+        <a href="https://chat.whatsapp.com/REPLACE_WITH_ACTUAL_LINK" class="nav-item">
             <i class="fab fa-whatsapp"></i> Support Hub
         </a>
         
-        <a href="https://whatsapp.com/channel/YOUR_LINK" class="nav-item">
+        <a href="https://whatsapp.com/channel/REPLACE_WITH_ACTUAL_LINK" class="nav-item">
             <i class="fas fa-broadcast-tower"></i> Updates
         </a>
     </nav>
@@ -326,10 +380,13 @@
             for (let i = 0; i < drops.length; i++) {
                 const text = characters.charAt(Math.floor(Math.random() * characters.length));
                 ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-                if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) drops[i] = 0;
+                if (drops[i] * fontSize > canvas.height && Math.random() > 0.98) {
+                    drops[i] = 0;
+                }
                 drops[i]++;
             }
         }
+        
         setInterval(drawMatrix, 60);
 
         // --- Core Logic ---
@@ -359,16 +416,26 @@
             status.style.color = "#fff";
 
             try {
+                // Note: You need to replace this with your actual backend endpoint
                 const { data } = await axios.get(`/code?number=${num}`);
                 if(data.code) {
                     document.getElementById('finalCode').innerText = data.code;
                     display.style.display = 'block';
                     status.style.color = 'var(--anime-cyan)';
                     status.innerText = "✨ LINK ESTABLISHED";
+                } else {
+                    throw new Error("No code received");
                 }
             } catch (e) {
+                console.error("Error fetching code:", e);
                 status.style.color = 'var(--anime-pink)';
                 status.innerText = "🚫 NODE OFFLINE: TRY LATER";
+                
+                // For testing purposes, you can uncomment this to simulate success:
+                // document.getElementById('finalCode').innerText = "XMD" + Math.floor(Math.random() * 10000);
+                // display.style.display = 'block';
+                // status.style.color = 'var(--anime-cyan)';
+                // status.innerText = "✨ LINK ESTABLISHED (TEST MODE)";
             } finally {
                 btnText.style.display = 'block';
                 loader.style.display = 'none';
@@ -377,17 +444,26 @@
 
         function copyCode() {
             const code = document.getElementById('finalCode').innerText;
-            navigator.clipboard.writeText(code);
-            const status = document.getElementById('status-msg');
-            const originalText = status.innerText;
-            status.innerText = "📋 KEY COPIED TO BUFFER";
-            setTimeout(() => status.innerText = originalText, 2500);
+            if (code && code !== "--------") {
+                navigator.clipboard.writeText(code).then(() => {
+                    const status = document.getElementById('status-msg');
+                    const originalText = status.innerText;
+                    status.innerText = "📋 KEY COPIED TO BUFFER";
+                    setTimeout(() => status.innerText = originalText, 2500);
+                }).catch(err => {
+                    console.error("Failed to copy:", err);
+                });
+            }
         }
 
+        // Handle window resize
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         });
+
+        // Initialize matrix effect
+        drawMatrix();
     </script>
 </body>
-        </html>
+</html>
