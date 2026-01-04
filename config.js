@@ -20,3 +20,4 @@ const config = {
   IMAGE_PATH: 'https://files.catbox.moe/oq9ey8.jpeg',
   BOT_FOOTER: '> ρσωєя∂ ву Qᴜᴇᴇɴ ꜱᴇʏᴀ xᴍᴅ🧸 ',
   BUTTON_IMAGES: { ALIVE: 'https://files.catbox.moe/oq9ey8.jpeg' }
+}
